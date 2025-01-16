@@ -7,16 +7,28 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
- email: string = '';
-  password: string = '';
-  errorMessage: string = '';
+  private apiUrl = 'http://localhost:5146/api/Authentification'; // URL de l'API pour l'authentification
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(private http: HttpClient, private router: Router) {}
 
-  login() {
-    const success = this.authService.login(this.email, this.password);
-    if (!success) {
-      this.errorMessage = 'Nom d\'utilisateur ou mot de passe incorrect';
+  // Méthode pour se connecter
+  login(user: UtilisateurDto): Observable<string> {
+    return this.http.post<string>(this.apiUrl, user);
+  }
+
+  // Méthode pour vérifier si l'utilisateur est connecté
+  isAuthenticated(): boolean {
+    return !!localStorage.getItem('token');
+  }
+
+
+  // Méthode pour obtenir le rôle de l'utilisateur à partir du token
+  getRole(): string | null {
+    const token = this.getToken();
+    if (token) {
+      const decodedToken = JSON.parse(atob(token.split('.')[1])); // Décoder le JWT pour obtenir les claims
+      return decodedToken.role;
     }
+    return null;
   }
 }

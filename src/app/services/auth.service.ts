@@ -6,36 +6,27 @@ import { Router } from '@angular/router';
 })
 export class AuthService {
 
-    private users = [
-        { email: 'mariemclient@gmail.com', password: 'client123', role: 'client' },
-        { email: 'mariemResp@gmail.com', password: 'responsable123', role: 'responsable' },
-      ];
-    
-      constructor(private router: Router) {}
-    
-      login(email: string, password: string): boolean {
-        const user = this.users.find((u) => u.email === email && u.password === password);
-    
-        if (user) {
-          localStorage.setItem('role', user.role);
-          if (user.role === 'client') {
-            this.router.navigate(['/reclamation']);
-          } else if (user.role === 'responsable') {
-            this.router.navigate(['/home']);
-          }
-          return true;
-        } else {
-          alert('Identifiants incorrects!');
-          return false;
-        }
-      }
-    
-      logout(): void {
-        localStorage.removeItem('role');
-        this.router.navigate(['/login']);
-      }
-    
-      getRole(): string | null {
-        return localStorage.getItem('role');
-      }
+    private apiUrl = 'http://localhost:5146/api/Authentification'; // URL de l'API pour l'authentification
+
+  constructor(private http: HttpClient, private router: Router) {}
+
+  // Méthode pour se connecter
+  login(user: UtilisateurDto): Observable<string> {
+    return this.http.post<string>(this.apiUrl, user);
+  }
+
+  // Méthode pour vérifier si l'utilisateur est connecté
+  isAuthenticated(): boolean {
+    return !!localStorage.getItem('token');
+  }
+
+ // Méthode pour obtenir le rôle de l'utilisateur à partir du token
+  getRole(): string | null {
+    const token = this.getToken();
+    if (token) {
+      const decodedToken = JSON.parse(atob(token.split('.')[1])); // Décoder le JWT pour obtenir les claims
+      return decodedToken.role;
+    }
+    return null;
+  }
 }

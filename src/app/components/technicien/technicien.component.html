@@ -1,0 +1,53 @@
+<div class="container">
+  <h2>Liste des Techniciens</h2>
+  <ul class="list-group">
+    <li *ngFor="let technicien of techniciens" class="list-group-item">
+      <strong>{{ technicien.nom }}</strong> - {{ technicien.email }} ({{ technicien.telephone }})
+      <button class="btn btn-info btn-sm float-right ml-2" (click)="selectTechnicien(technicien)">Modifier</button>
+      <button class="btn btn-danger btn-sm float-right" (click)="deleteTechnicien(technicien.id)">Supprimer</button>
+    </li>
+  </ul>
+
+  <h3 *ngIf="selectedTechnicien">Modifier le Technicien</h3>
+  <form (ngSubmit)="selectedTechnicien ? updateTechnicien() : addTechnicien()">
+    <div class="form-group">
+      <label for="nom">Nom du Technicien</label>
+      <input
+        type="text"
+        [(ngModel)]="selectedTechnicien?.nom || newTechnicien.nom"
+        class="form-control"
+        id="nom"
+        name="nom"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input
+        type="email"
+        [(ngModel)]="selectedTechnicien?.email || newTechnicien.email"
+        class="form-control"
+        id="email"
+        name="email"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label for="telephone">Téléphone</label>
+      <input
+        type="text"
+        [(ngModel)]="selectedTechnicien?.telephone || newTechnicien.telephone"
+        class="form-control"
+        id="telephone"
+        name="telephone"
+        required
+      />
+    </div>
+    <button type="submit" class="btn btn-primary mt-2">
+      {{ selectedTechnicien ? 'Mettre à jour' : 'Ajouter' }}
+    </button>
+    <button *ngIf="selectedTechnicien" type="button" class="btn btn-secondary mt-2" (click)="selectedTechnicien = null">
+      Annuler
+    </button>
+  </form>
+</div>

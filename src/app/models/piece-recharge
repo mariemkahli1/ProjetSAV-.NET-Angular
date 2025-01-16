@@ -1,0 +1,13 @@
+export interface Article {
+    id: number;
+    libelle: string;
+    estSousGarantie: boolean;
+    prix: number;
+  }
+export interface PieceRechange {
+  id: number;
+  nom: string;
+  prix: number;
+  articleId: number;
+  article: Article;
+}

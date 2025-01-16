@@ -1,0 +1,73 @@
+<div class="container">
+  <h2>Liste des Réclamations</h2>
+  <ul class="list-group">
+    <li *ngFor="let reclamation of reclamations" class="list-group-item">
+      <strong>Description:</strong> {{ reclamation.description }}<br />
+      <strong>Date:</strong> {{ reclamation.dateReclamation | date }}<br />
+      <strong>État:</strong> {{ reclamation.etatId }}<br />
+      <strong>Client ID:</strong> {{ reclamation.clientId }}
+      <!-- Bouton de suppression -->
+      <!--<button (click)="deleteReclamation(reclamation.id)" class="btn btn-danger btn-sm ml-3">Supprimer</button>-->
+    </li>
+  </ul>
+    
+
+  <form (ngSubmit)="addReclamation()">
+    <h3>Ajouter une Réclamation</h3>
+  
+    <div class="form-group">
+      <label for="description">Description</label>
+      <input
+        type="text"
+        [(ngModel)]="newReclamation.description"
+        class="form-control"
+        id="description"
+        name="description"
+        placeholder="Description"
+        required
+      />
+    </div>
+  
+    <div class="form-group">
+      <label for="idArticleReclamation">ID de l'Article</label>
+      <input
+        type="number"
+        [(ngModel)]="newReclamation.idArticleReclamation"
+        class="form-control"
+        id="idArticleReclamation"
+        name="idArticleReclamation"
+        placeholder="ID Article"
+        required
+      />
+    </div>
+  
+   <div class="form-group">
+      <label for="etatId">ID de l'État</label>
+      <input
+        type="number"
+        [(ngModel)]="newReclamation.etatId"
+        class="form-control"
+        id="etatId"
+        name="etatId"
+        placeholder="État ID"
+        required
+      />
+    </div>
+  
+    <div class="form-group">
+      <label for="clientId">ID du Client</label>
+      <input
+        type="number"
+        [(ngModel)]="newReclamation.clientId"
+        class="form-control"
+        id="clientId"
+        name="clientId"
+        placeholder="Client ID"
+        required
+      />
+    </div>
+  
+    <button type="submit" class="btn btn-primary mt-3">Ajouter</button>
+  </form>
+  
+</div>

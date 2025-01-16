@@ -1,0 +1,65 @@
+<div class="container">
+  <h2>Liste des Interventions</h2>
+  <ul class="list-group">
+    <li *ngFor="let intervention of interventions" class="list-group-item">
+      <strong>Date:</strong> {{ intervention.dateIntervention | date }}<br />
+      <strong>Montant:</strong> {{ intervention.montantFacture }}<br />
+      <strong>Technicien ID:</strong> {{ intervention.technicienId }}<br />
+      <strong>Réclamation ID:</strong> {{ intervention.reclamationId }}
+    </li>
+  </ul>
+
+  <form (ngSubmit)="addIntervention()">
+    <h3>Ajouter une Intervention</h3>
+  
+    <div class="form-group">
+      <label for="dateIntervention">Date de l'Intervention</label>
+      <input
+        type="date"
+        [(ngModel)]="newIntervention.dateIntervention"
+        class="form-control"
+        id="dateIntervention"
+        name="dateIntervention"
+        required
+      />
+    </div>
+  
+    <div class="form-group">
+      <label for="montantFacture">Montant de la Facture</label>
+      <input
+        type="number"
+        [(ngModel)]="newIntervention.montantFacture"
+        class="form-control"
+        id="montantFacture"
+        name="montantFacture"
+        required
+      />
+    </div>
+  
+    <div class="form-group">
+      <label for="technicienId">ID du Technicien</label>
+      <input
+        type="number"
+        [(ngModel)]="newIntervention.technicienId"
+        class="form-control"
+        id="technicienId"
+        name="technicienId"
+        required
+      />
+    </div>
+  
+    <div class="form-group">
+      <label for="reclamationId">ID de la Réclamation</label>
+      <input
+        type="number"
+        [(ngModel)]="newIntervention.reclamationId"
+        class="form-control"
+        id="reclamationId"
+        name="reclamationId"
+        required
+      />
+    </div>
+  
+    <button type="submit" class="btn btn-primary mt-3">Ajouter</button>
+  </form>
+</div>

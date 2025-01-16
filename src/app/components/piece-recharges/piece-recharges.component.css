@@ -1,0 +1,124 @@
+/* Conteneur principal */
+.container {
+    margin-top: 30px;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Titre */
+  h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #007bff;
+  }
+  
+  /* Liste des pièces de rechange */
+  .list-group-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+  }
+  
+  .list-group-item strong {
+    color: #007bff;
+  }
+  
+  .list-group-item .btn {
+    margin-left: 8px;
+  }
+  
+  /* Formulaire d'ajout de pièce de rechange */
+  form {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+  }
+  
+  /* Champs de saisie */
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  .form-control {
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+  
+  .form-check-label {
+    margin-left: 5px;
+  }
+  
+  .form-check-input {
+    margin-top: 5px;
+  }
+  
+  /* Boutons */
+  .btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+    width: 100%;
+  }
+  
+  .btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+  }
+  
+  .btn-secondary {
+    background-color: #6c757d;
+    border-color: #6c757d;
+    width: 100%;
+  }
+  
+  .btn-secondary:hover {
+    background-color: #5a6268;
+    border-color: #545b62;
+  }
+  
+  .btn-warning {
+    background-color: #ffc107;
+    border-color: #ffc107;
+  }
+  
+  .btn-warning:hover {
+    background-color: #e0a800;
+    border-color: #d39e00;
+  }
+  
+  .btn-danger {
+    background-color: #dc3545;
+    border-color: #dc3545;
+  }
+  
+  .btn-danger:hover {
+    background-color: #c82333;
+    border-color: #bd2130;
+  }
+  
+  /* Espacements */
+  .ms-2 {
+    margin-left: 8px;
+  }
+  
+  .float-end {
+    float: right;
+  }
+  
+  /* Formulaire de mise à jour de pièce */
+  form *ngIf {
+    margin-top: 20px;
+    background-color: #f9f9f9;
+    border: 2px dashed #28a745;
+  }
+  

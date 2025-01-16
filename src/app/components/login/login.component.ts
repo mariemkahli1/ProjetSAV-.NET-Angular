@@ -7,16 +7,16 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-  email: string = '';
+ email: string = '';
   password: string = '';
+  errorMessage: string = '';
 
   constructor(private authService: AuthService, private router: Router) {}
 
-  onLogin(): void {
+  login() {
     const success = this.authService.login(this.email, this.password);
     if (!success) {
-      this.email = '';
-      this.password = '';
+      this.errorMessage = 'Nom d\'utilisateur ou mot de passe incorrect';
     }
   }
 }
